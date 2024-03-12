@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import ShowMessage from './components/ShowMessage.vue'
 </script>
 
 <template>
@@ -10,8 +10,8 @@ import HelloWorld from './components/HelloWorld.vue'
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ShowMessage msg="Vite + Vue" />
+</div>
 </template>
 
 <style scoped>
@@ -28,3 +28,4 @@ import HelloWorld from './components/HelloWorld.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+./components/ShowMessage.vue
