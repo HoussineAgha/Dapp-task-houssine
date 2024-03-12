@@ -10,12 +10,12 @@ contract MessageContract {
     string private message;
 
     event MessageUpdated(string newMessage);
-
+    //insert message
     function setMessage(string memory _message) public {
         message = _message;
         emit MessageUpdated(_message);
     }
-
+    //get message
     function getMessage() public view returns (string memory) {
         return message;
     }

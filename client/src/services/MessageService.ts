@@ -1,24 +1,23 @@
-import { ethers } from 'ethers';
+import Web3 from 'web3';
 import MessageContract from '../../../artifacts/contracts/Task.sol/MessageContract.json';
 
-const contractAddress = '0x0165878A594ca255338adfa4d48449f69242Eb8F'; // Deployed contract address
+const contractAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'; // Deployed contract address
+
 class MessageService {
-  private provider: ethers.providers.JsonRpcProvider;
-  private signer: ethers.Signer;
-  private contract: ethers.Contract;
+  private web3: Web3;
+  private contract: any; // Contract type from web3.js
 
   constructor() {
-    this.provider = new ethers.providers.JsonRpcProvider();
-    this.signer = this.provider.getSigner();
-    this.contract = new ethers.Contract(contractAddress, MessageContract.abi, this.signer);
+    this.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545')); // Assuming local RPC node
+    this.contract = new this.web3.eth.Contract(MessageContract.abi, contractAddress);
   }
 
   async setMessage(message: string): Promise<void> {
-    await this.contract.setMessage(message);
+    await this.contract.methods.setMessage(message).send({ from: '0xcd3B766CCDd6AE721141F452C550Ca635964ce71' });
   }
 
   async getMessage(): Promise<string> {
-    return await this.contract.getMessage();
+    return await this.contract.methods.getMessage().call();
   }
 }
 
