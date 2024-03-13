@@ -3,7 +3,7 @@ const hre = require("hardhat");
 async function main() {
   const task = await hre.ethers.deployContract("MessageContract");
 
-  await task.waitForDeployment(); //deploying your smart contract
+  await task.waitForDeployment(); //deploying smart contract
 
   console.log("Deployed contract address:",`${task.target}`);
 }
